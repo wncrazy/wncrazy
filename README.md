@@ -36,11 +36,36 @@
 
 ## התקנה והרצה
 
+### אופציה 1: סקריפט התקנה אוטומטי (מומלץ)
+
+```bash
+./setup.sh
+```
+
+הסקריפט יוצר virtualenv, מתקין את תלויות ה-Python, מתקין את Ollama אם הוא לא קיים (Linux/macOS),
+מוודא ששרת Ollama רץ, ומושך את מודל ברירת המחדל (`gemma3:4b`). ניתן להריץ אותו שוב בבטחה בכל
+שלב — כל שלב בודק אם הוא כבר בוצע.
+
+אפשרויות:
+```bash
+./setup.sh --model gemma3:12b   # למשוך מודל אחר במקום ברירת המחדל
+./setup.sh --skip-ollama        # להתקין רק את סביבת ה-Python, בלי Ollama
+```
+
+### אופציה 2: התקנה ידנית
+
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
+ollama pull gemma3:4b     # ראו "דרישות מוקדמות" למעלה
+```
+
+### הרצה
+
+```bash
+source .venv/bin/activate
 python run.py            # מאזין על http://127.0.0.1:8000
 ```
 
