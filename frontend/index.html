@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Photo Culler — מיון תמונות מקומי</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>📷 Photo Culler</h1>
+    <div id="ollama-status" class="ollama-status">בודק חיבור ל-Ollama…</div>
+  </header>
+
+  <section class="scan-panel">
+    <div class="row">
+      <label for="folder-input">תיקיית תמונות (נתיב מלא):</label>
+      <input id="folder-input" type="text" placeholder="/home/user/Pictures/wedding" />
+    </div>
+    <div class="row row-options">
+      <label class="checkbox">
+        <input id="use-ai" type="checkbox" checked />
+        השתמש בהערכת AI (Ollama)
+      </label>
+      <label for="model-select">מודל:</label>
+      <select id="model-select"></select>
+      <button id="scan-btn">🔍 סרוק תיקייה</button>
+    </div>
+    <div id="progress-wrap" class="progress-wrap hidden">
+      <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+      <div id="progress-text" class="progress-text"></div>
+    </div>
+  </section>
+
+  <section id="results-panel" class="results-panel hidden">
+    <div class="toolbar">
+      <div class="stats" id="stats"></div>
+      <div class="filters">
+        <label><input type="radio" name="filter" value="all" checked /> הכול</label>
+        <label><input type="radio" name="filter" value="suggested" /> מומלץ למחיקה</label>
+        <label><input type="radio" name="filter" value="duplicates" /> כפילויות בלבד</label>
+        <label><input type="radio" name="filter" value="blurry" /> מטושטשות</label>
+      </div>
+      <button id="apply-btn" class="danger">🗂️ העבר נדחות לתיקיית _rejected</button>
+    </div>
+    <div id="grid" class="grid"></div>
+  </section>
+
+  <div id="lightbox" class="lightbox hidden">
+    <div class="lightbox-inner">
+      <button id="lightbox-close" class="lightbox-close">✕</button>
+      <img id="lightbox-img" src="" alt="" />
+      <div id="lightbox-info" class="lightbox-info"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

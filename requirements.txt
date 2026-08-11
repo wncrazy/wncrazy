@@ -1,0 +1,9 @@
+fastapi>=0.111
+uvicorn[standard]>=0.30
+pillow>=10.3
+opencv-python-headless>=4.10
+imagehash>=4.3
+numpy>=1.26
+ollama>=0.3
+python-multipart>=0.0.9
+pillow-heif>=0.18
